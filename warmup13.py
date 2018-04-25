@@ -4,10 +4,10 @@
 
 from random import randint
 
-alist = []
+aList = []
 for i in range(20):
-    alist.append(randint(1,100))
+    aList.append(randint(1,100))
 
-print('Sum =',sum(alist))
-print('Min =',min(alist))
-print('Max =',max(alist))
+print('Sum =',sum(aList))
+print('Min =',min(aList))
+print('Max =',max(aList))
