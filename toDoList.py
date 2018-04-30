@@ -22,4 +22,5 @@ while True:
     
     if 'add' in task:
         toDo.append(task[1:])
-
+    if 'delete' in task:
+        toDo.remove(task[1:])
