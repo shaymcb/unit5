@@ -5,24 +5,24 @@
 from random import randint
 from time import time
 
-N = 10 #how many numbers will be sorted
+N = 1000 #how many numbers will be sorted
 
-def mySort(A):
-    swapped = True
-    while swapped:
-        swapped = False
-        for i in range(len(A)-1):
-            if A[i] > A[i+1]:
-                A[i],A[i+1] = A[i+1],A[i] #swap in python
-                swapped = True
-        if not swapped:
-            break
-        swapped = False
-        for i in range(len(A)-2,-1,-1): #the second -1 tells it to go backwards
-            if A[i] > A[i+1]:
-                A[i],A[i+1] = A[i+1],A[i] #swap in python
-                swapped = True        
+def quicksort(A,lo,hi):
+    if lo < hi:
+        p = partition(A,lo,hi)
+        quicksort(A,lo,p-1)
+        quicksort(A,p+1,hi)
     return A
+    
+def partition(A,lo,hi):
+    pivot = A[hi]
+    i = lo -1
+    for j in range(lo,hi):
+        if A[j] < pivot:
+            i = i+1
+            A[i],A[j]=A[j],A[i]
+    A[i+1],A[hi] = A[hi],A[i+1]
+    return i+1
     
 if __name__ == '__main__':
 
@@ -35,7 +35,7 @@ if __name__ == '__main__':
     
     #time how long your sort takes
     t1 = time()
-    numbers = mySort(numbers)
+    numbers = quicksort(numbers, 0, len(numbers)-1)
     #numbers = numbers.sort()
     t2 = time()
     
