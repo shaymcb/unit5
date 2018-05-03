@@ -11,9 +11,16 @@ def mergesort(A,B,n):
     B = A
     splitmerge(B,0,n,A)
 
-splitmerge(B,iBegin,iEnd,A):
+def splitmerge(B,iBegin,iEnd,A):
     if iEnd - iBegin < 2:
         return A
+    iMiddle = (iEnd - iBegin)/2
+    splitmerge(A, iBegin, iMiddle, B)
+    splitmerge(A, iMiddle, iEnd, B)
+    merge(B, iBegin, iMiddle, iEnd, A)
+
+def merge(A, iBegin, iMiddle, iEnd, B):
+    
     
 if __name__ == '__main__':
 
