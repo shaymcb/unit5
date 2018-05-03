@@ -20,7 +20,16 @@ def splitmerge(B,iBegin,iEnd,A):
     merge(B, iBegin, iMiddle, iEnd, A)
 
 def merge(A, iBegin, iMiddle, iEnd, B):
-    
+    i = iBegin
+    j = iMiddle
+    for k in range(iBegin, iEnd):
+        if i < iMiddle and (j >= iEnd or A[i] <= A[j]):
+            B[k] = A[i]
+            i += 1
+        else:
+            B[k] = A[j]
+            j += 1
+
     
 if __name__ == '__main__':
 
@@ -33,7 +42,7 @@ if __name__ == '__main__':
     
     #time how long your sort takes
     t1 = time()
-    numbers = quicksort(numbers, 0, len(numbers)-1)
+    numbers = mergesort(numbers, 0, len(numbers)-1)
     #numbers = numbers.sort()
     t2 = time()
     
