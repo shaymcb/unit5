@@ -5,7 +5,7 @@
 from random import randint
 from time import time
 
-N = 1000 #how many numbers will be sorted
+N = 100 #how many numbers will be sorted
 
 def quicksort(A,lo,hi):
     if lo < hi:
