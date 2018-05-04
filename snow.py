@@ -16,7 +16,6 @@ def step():
         for i in range(FLAKES):
             data['snowList'].append(Sprite(data['flake'],(randint(0,WIDTH),0)))
     for flake in data['snowList']:
-
         if flake.y < HEIGHT - 20:
             flake.x += randint(-4,3)
             flake.y += randint(0,3)
