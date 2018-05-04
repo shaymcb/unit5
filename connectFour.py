@@ -22,9 +22,9 @@ if __name__ == "__main__":
     for i in range(6):
         for j in range(7):
             newHole = Sprite(hole, (SPACE*(j+1)+RADIUS*2*j,SPACE*(i+1)+RADIUS*2*i))
-            Sprite(TextAsset(i*7+j),(SPACE*(j+1)+RADIUS*2*j,SPACE*(i+1)+RADIUS*2*i))
             data['holelist'].append(newHole)
     
+    App().listenMouseEvent(event)
     
     App().run()
 
