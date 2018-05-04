@@ -2,10 +2,13 @@
 #4May2018
 #warmup15.py
 
-List1 = (input('Enter numbers: ')).split(' ')
-List2 = []
 
-for num in List1:
-    List2.append(float(num)*2)
+def double(List):
+    list2 = []
+    for num in List:
+        list2.append(float(num)*2)
+    return(list2)
 
-print(List2)
+list1 = (input('Enter numbers: ')).split(' ')
+
+print(double(list1))
