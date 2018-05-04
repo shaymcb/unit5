@@ -8,7 +8,7 @@ from random import randint
 FLAKES = 2
 RATE = 20
 WIDTH = 1000
-HEIGHT = 540
+HEIGHT = 560
 
 def step():
     data['frames'] += 1
@@ -17,7 +17,7 @@ def step():
             data['snowList'].append(Sprite(data['flake'],(randint(0,WIDTH),0)))
     for flake in data['snowList']:
 
-        if flake.y < HEIGHT:
+        if flake.y < HEIGHT - 20:
             flake.x += randint(-4,3)
             flake.y += randint(0,3)
 
