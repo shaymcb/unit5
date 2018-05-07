@@ -5,23 +5,24 @@
 from ggame import *
 from random import randint
 
-FLAKES = 2
-RATE = 20
+RATE = 40  #how often to add a new flake: lower number = heavier snowfall
+WIND = 4 #how much the snow whips around
 WIDTH = 1000
 HEIGHT = 560
 
-def step():
+#makes the snow fall, generates new flakes and stores them in a list
+def storm():
     data['frames'] += 1
     if data['frames']%RATE == 0:
-        for i in range(FLAKES):
-            data['snowList'].append(Sprite(data['flake'],(randint(0,WIDTH),0)))
+        data['snowList'].append(Sprite(data['flake'],(randint(0,WIDTH),0)))
     for flake in data['snowList']:
-        if flake.y < HEIGHT - 20:
-            flake.x += randint(-4,3)
-            flake.y += randint(0,3)
+        if flake.y < HEIGHT - 20:  #this is all I could figure out for accumulation: stops at bottom
+            if data['frames']%WIND ==0:
+                flake.x += randint(-5,4) #flakes move randomly side to side
+            flake.y += randint(0,3) #flakes do not fall at constant rate
 
+#generates background and first snowflake
 if __name__ == "__main__":
-    
     data = {}
     data['snowList'] = []
     data['frames'] = 0
@@ -33,7 +34,6 @@ if __name__ == "__main__":
     data['flake'] = CircleAsset(10,LineStyle(1,white),white)
     
     Sprite(background)
-    for i in range(FLAKES):
-        data['snowList'].append(Sprite(data['flake'],(randint(0,WIDTH),0)))
+    data['snowList'].append(Sprite(data['flake'],(randint(0,WIDTH),0)))
     
-    App().run(step)
+    App().run(storm)
