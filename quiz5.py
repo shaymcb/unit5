@@ -21,7 +21,7 @@ def decimalRange(small, large, count):
     rangeList = []
     num = small
     while num < large:
-        rangeList.append(round(num,4))
+        rangeList.append(num)
         num += count
     return rangeList
 
